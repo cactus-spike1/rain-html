@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анимация капелек</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #1f1f1f; /* Темный фон */
+            overflow: hidden; /* Скрыть прокрутку */
+        }
+
+        .raindrop {
+            position: absolute;
+            bottom: 100%; /* Начальная позиция выше экрана */
+            width: 5px; /* Ширина капли */
+            height: 15px; /* Высота капли */
+            background-color: #00f; /* Цвет капли */
+            border-radius: 50%; /* Закругленные края для капли */
+            animation: fall linear infinite; /* Анимация падения */
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0); /* Начальная позиция */
+            }
+            100% {
+                transform: translateY(100vh); /* Конечная позиция */
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Функция для создания капелек
+        function createRaindrop() {
+            const raindrop = document.createElement('div');
+            raindrop.classList.add('raindrop');
+
+            // Устанавливаем случайную позицию по горизонтали
+            raindrop.style.left = Math.random() * 100 + 'vw'; // 0% - 100% ширины экрана
+            raindrop.style.animationDuration = Math.random() * 1 + 1 + 's'; // Случайная продолжительность анимации от 1 до 2 секунд
+
+            document.body.appendChild(raindrop);
+
+            // Удаляем каплю после завершения анимации
+            raindrop.addEventListener('animationend', () => {
+                raindrop.remove();
+            });
+        }
+
+        // Создаем капли каждые 200 миллисекунд
+        setInterval(createRaindrop, 200);
+    </script>
+</body>
+</html>
