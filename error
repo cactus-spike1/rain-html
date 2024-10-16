@@ -20,7 +20,7 @@
             bottom: 100%; /* Начальная позиция выше экрана */
             width: 5px; /* Ширина капли */
             height: 15px; /* Высота капли */
-            background-color: #00f; /* Цвет капли */
+            background-color: #ff0000; /* Цвет капли */
             border-radius: 50%; /* Закругленные края для капли */
             animation: fall linear infinite; /* Анимация падения */
         }
